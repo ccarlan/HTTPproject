@@ -65,14 +65,14 @@ public class HttpProtocol {
 				StringTokenizer tokenizer = new StringTokenizer(theInput);
 				String httpMethod = tokenizer.nextToken();
 				String httpQueryString = tokenizer.nextToken();
-				StringBuffer htmlResponse = new StringBuffer();
-				htmlResponse
+				StringBuffer responseBuffer = new StringBuffer();
+				responseBuffer
 						.append("<b> This is the HTTP Server Home Page.... </b><BR>");
-				htmlResponse.append("The HTTP Client request is ....<BR>");
+				responseBuffer.append("The HTTP Client request is ....<BR>");
 				if (httpMethod.equalsIgnoreCase("GET")) {
 					if (httpQueryString.equals("/")) {
-						htmlResponse.append(theInput + "<BR>");
-						sendResponse(200, htmlResponse.toString(), false);
+						responseBuffer.append(theInput + "<BR>");
+						sendResponse(200, responseBuffer.toString(), false);
 					} else {
 						// This is interpreted as a file name.
 						String fileName = httpQueryString.replaceFirst("/", "");
@@ -141,7 +141,6 @@ public class HttpProtocol {
 //		theOutput = theOutput + "Connection: close" + " ";
 
 		outToClient.write(statusLine.getBytes());
-		outToClient.write(dateDetails.getBytes());
 		outToClient.write(serverdetails.getBytes());
 		outToClient.write(contentTypeLine.getBytes());
 		outToClient.write(contentLengthLine.getBytes());
