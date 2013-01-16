@@ -40,7 +40,7 @@ import java.net.Socket;
 public class HTTPServer {
 	 public static void main(String[] args) throws Exception {
 
-	        // Creating the server's socket.		 
+	   		 
 	        ServerSocket serverSocket = null;
 	        try {
 	            serverSocket = new ServerSocket (5000, 10, InetAddress.getByName("127.0.0.1"));
@@ -49,7 +49,7 @@ public class HTTPServer {
 	            System.exit(1);
 	        }
 
-	     // Creating the client's socket.
+	
 	        Socket clientSocket = null;
 	        try {
 	            clientSocket = serverSocket.accept();

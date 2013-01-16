@@ -15,7 +15,7 @@ public class HTTPClient {
 	
 	public static void main(String[] args) throws IOException {
 
-        // The client's socket.
+       
 		Socket clientSocket = null;
 		// The data the client sends to the server.
 		PrintWriter outputToServer = null;
@@ -24,8 +24,7 @@ public class HTTPClient {
 
 		try {
 			InetAddress address = InetAddress.getByName("127.0.0.1");
-			// Connecting the client to a server with a certain address and the
-			// port 5000.
+			
 			clientSocket = new Socket(address, 5000);
 			outputToServer = new PrintWriter(clientSocket.getOutputStream(),
 					true);

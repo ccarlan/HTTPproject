@@ -39,7 +39,7 @@ import java.util.StringTokenizer;
  */
 
 public class HttpProtocol {
-	
+
 	static final String HTML_START = "<html>"
 			+ "<title>HTTP Server in java</title>" + "<body>";
 	static final String HTML_END = "</body>" + "</html>";
@@ -88,7 +88,10 @@ public class HttpProtocol {
 									false);
 						}
 					}
-					state = WAITING;
+					theOutput = "Waiting for client's request";
+//					outToClient
+//							.write("Waiting for client's request".getBytes());
+					state = SENTSERVERREQUEST;
 				} else {
 					theOutput = "You're supposed to write a GET http request! Try again.";
 				}
@@ -129,13 +132,13 @@ public class HttpProtocol {
 			contentLengthLine = "Content-Length: " + responseString.length();
 		}
 
-		theOutput = statusLine + " ";
-		theOutput = theOutput + dateDetails + " ";
-		theOutput = theOutput + serverdetails + " ";
-		theOutput = theOutput + contentTypeLine + " ";
-		theOutput = theOutput + contentLengthLine + " ";
-		theOutput = theOutput + responseString;
-		theOutput = theOutput + "Connection: close" + " ";
+//		theOutput = statusLine + " ";
+//		theOutput = theOutput + dateDetails + " ";
+//		theOutput = theOutput + serverdetails + " ";
+//		theOutput = theOutput + contentTypeLine + " ";
+//		theOutput = theOutput + contentLengthLine + " ";
+//		theOutput = theOutput + responseString;
+//		theOutput = theOutput + "Connection: close" + " ";
 
 		outToClient.write(statusLine.getBytes());
 		outToClient.write(serverdetails.getBytes());
@@ -149,7 +152,7 @@ public class HttpProtocol {
 			outToClient.write(responseString.getBytes());
 		}
 
-		outToClient.close();
+//		outToClient.close();
 
 	}
 
